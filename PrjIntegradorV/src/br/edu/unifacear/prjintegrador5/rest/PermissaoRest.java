@@ -1,8 +1,10 @@
 package br.edu.unifacear.prjintegrador5.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import br.edu.unifacear.prjintegrador5.model.business.BusinessException;
@@ -27,6 +29,18 @@ public class PermissaoRest {
 			return r.status(200).entity("Permissão inserida com sucesso!").build();
 		} catch (Exception e) {
 			return r.status(200).entity(new BusinessException("Falha na conexão!")).build();
+		}
+	}
+	
+	@GET
+	@Produces("application/json; charset=UTF-8")
+	@Path("/listar")
+	public Response listar() {
+		Response r = null;
+		try {
+			return r.status(200).entity(business.listar()).build();
+		} catch(Exception e) {
+			return r.status(200).entity(new BusinessException("Falha na conexão")).build();
 		}
 	}
 }
