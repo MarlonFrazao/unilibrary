@@ -19,7 +19,7 @@ public class PermissaoBusiness {
 		for(Permissao pe : dao.listar()) {
 			if(p.getDescricao().equals(pe.getDescricao())) {
 				aux = false;
-				throw new BusinessException("Permiss„o j· cadastrada");
+				throw new BusinessException("Permiss√£o j√° cadastrada");
 			} 
 		}
 		
@@ -40,7 +40,7 @@ public class PermissaoBusiness {
 		}
 		
 		if(!aux) {
-			throw new BusinessException("ImpossÌvel alterar: Permiss„o n„o encontrada!");
+			throw new BusinessException("Imposs√≠vel alterar: Permiss√£o n√£o encontrada!");
 		}
 	}
 	
@@ -48,7 +48,7 @@ public class PermissaoBusiness {
 		List<Permissao> lista = new ArrayList<Permissao>();
 		
 		if(dao.listar().size() < 1) {
-			throw new BusinessException("N„o h· permissıes cadastradas!");
+			throw new BusinessException("N√£o h√° permiss√µes cadastradas!");
 		} else {
 			lista = dao.listar();
 		}
@@ -57,7 +57,7 @@ public class PermissaoBusiness {
 	
 	public void excluir(Permissao p) throws BusinessException {
 		if(dao.obter(p.getId()).getDescricao().equals("") ) {
-			throw new BusinessException("Permiss„o n„o encontrada!");
+			throw new BusinessException("Permiss√£o n√£o encontrada!");
 		} else {
 			dao.excluir(p);	
 		}
@@ -67,8 +67,8 @@ public class PermissaoBusiness {
 	public Permissao obter(int id) throws BusinessException {
 		Permissao e = new Permissao();
 		
-		if(dao.obter(id).getDescricao().equals("")) {
-			throw new BusinessException("Permiss„o n„o encotrada!");
+		if(dao.obter(id).getId() == null) {
+			throw new BusinessException("Permiss√£o n√£o encotrada!");
 		} else {
 			e = dao.obter(id);
 		}
