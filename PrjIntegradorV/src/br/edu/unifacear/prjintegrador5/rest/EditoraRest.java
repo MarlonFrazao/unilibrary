@@ -28,7 +28,7 @@ public class EditoraRest {
 			business.inserir(e);
 			return Response.status(201).entity("Editora cadastrada com sucesso!").build();
 		} catch(Exception ex) {
-			return Response.status(201).entity("Falha na conexão!").build();
+			return Response.status(201).entity("Erro: " + ex.getMessage()).build();
 		}
 	}
 	
@@ -40,7 +40,7 @@ public class EditoraRest {
 			business.alterar(e);
 			return Response.status(201).entity("Editora alterada com sucesso!").build();
 		} catch (Exception ex) {
-			return Response.status(201).entity("Falha na conexão!").build();
+			return Response.status(201).entity("Erro: " + ex.getMessage()).build();
 		}
 	}
 	
@@ -51,7 +51,7 @@ public class EditoraRest {
 		try {
 			return Response.status(201).entity(business.listar()).build();
 		} catch(Exception ex) {
-			return Response.status(201).entity("Falha na conexão!").build();
+			return Response.status(201).entity("Erro: " + ex.getMessage()).build();
 		}
 	}
 	
@@ -63,7 +63,7 @@ public class EditoraRest {
 		try{
 			return Response.status(201).entity(business.obter(e.getId())).build();
 		} catch(Exception ex) {
-			return Response.status(201).entity("Falha na conexão!").build();
+			return Response.status(201).entity("Erro: " + ex.getMessage()).build();
 		}
 	}
 
@@ -75,7 +75,7 @@ public class EditoraRest {
 			business.excluir(e);
 			return Response.status(201).entity("Editora excluida com sucesso!").build();
 		} catch(Exception ex) {
-			return Response.status(201).entity("Falha na conexão!").build();
+			return Response.status(201).entity("Erro: " + ex.getMessage()).build();
 		}
 	}
 }

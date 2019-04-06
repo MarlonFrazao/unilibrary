@@ -28,7 +28,7 @@ public class EditoraBusiness{
 			}
 			
 			if (aux) {
-				throw new BusinessException("Editora j? cadastrada");
+				throw new BusinessException("Editora já cadastrada");
 			} else {
 				dao.inserir(e);
 			}
@@ -36,12 +36,18 @@ public class EditoraBusiness{
 	}
 	
 	public void alterar(Editora e) throws BusinessException {
-		Editora ed = dao.obter(e.getId());
+		Boolean aux = false;
 		
-		if(ed.getRazaoSocial().equals("")) {
-			throw new BusinessException("Editora n?o encontrada!");
-		} else {
-			dao.alterar(e);
+		for (Editora ed : dao.listar()) {
+			if(e.getId() == ed.getId()) {
+				aux = true;
+				dao.alterar(e);
+				break;
+			}
+		}
+		
+		if(!aux) {
+			throw new BusinessException("Impossível alterar: Permissão não encontrada!");
 		}
 	}
 	
@@ -49,7 +55,7 @@ public class EditoraBusiness{
 		List<Editora> lista = new ArrayList<Editora>();
 		
 		if(dao.listar().size() < 1) {
-			throw new BusinessException("N?o h? editoras cadastradas!");
+			throw new BusinessException("Não há editoras cadastradas!");
 		} else {
 			lista = dao.listar();
 		}
@@ -60,8 +66,8 @@ public class EditoraBusiness{
 	public Editora obter(int id) throws BusinessException {
 		Editora e = new Editora();
 		
-		if(dao.obter(id).getRazaoSocial().equals("")) {
-			throw new BusinessException("Editora n?o encontrada!");
+		if(dao.obter(id).getId() == null) {
+			throw new BusinessException("Editora não encontrada!");
 		} else {
 			e = dao.obter(id);
 		}
@@ -72,7 +78,7 @@ public class EditoraBusiness{
 	public void excluir(Editora e) throws BusinessException {
 		
 		if(dao.obter(e.getId()).getRazaoSocial().equals("")) {
-			throw new BusinessException("Editora n?o encontrada!");
+			throw new BusinessException("Editora não encontrada!");
 		} else {
 			dao.excluir(e);
 		}

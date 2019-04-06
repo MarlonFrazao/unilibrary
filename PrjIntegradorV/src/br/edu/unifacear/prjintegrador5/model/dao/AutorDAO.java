@@ -21,8 +21,8 @@ public class AutorDAO extends DAO {
 			
 			PreparedStatement ps = db.getConnection().prepareStatement(SQL_INSERT);
 			
-			ps.setString(2, a.getNome());
-			ps.setInt(3, a.getQuantEditais());
+			ps.setString(1, a.getNome());
+			ps.setInt(2, a.getQuantEditais());
 			
 			ps.executeUpdate();
 			

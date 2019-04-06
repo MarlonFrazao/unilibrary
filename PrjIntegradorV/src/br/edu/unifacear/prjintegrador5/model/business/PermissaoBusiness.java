@@ -1,5 +1,6 @@
 package br.edu.unifacear.prjintegrador5.model.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.unifacear.prjintegrador5.model.dao.PermissaoDAO;
@@ -43,15 +44,34 @@ public class PermissaoBusiness {
 		}
 	}
 	
-	public List<Permissao> listar() {
-		return dao.listar();
+	public List<Permissao> listar() throws BusinessException {
+		List<Permissao> lista = new ArrayList<Permissao>();
+		
+		if(dao.listar().size() < 1) {
+			throw new BusinessException("Não há permissões cadastradas!");
+		} else {
+			lista = dao.listar();
+		}
+		return lista;
 	}
 	
-	public void excluir(Permissao p) {
-		dao.excluir(p);		
+	public void excluir(Permissao p) throws BusinessException {
+		if(dao.obter(p.getId()).getDescricao().equals("") ) {
+			throw new BusinessException("Permissão não encontrada!");
+		} else {
+			dao.excluir(p);	
+		}
 	}
 	
-	public Permissao obter(int id) {
-		return dao.obter(id);
+	
+	public Permissao obter(int id) throws BusinessException {
+		Permissao e = new Permissao();
+		
+		if(dao.obter(id).getDescricao().equals("")) {
+			throw new BusinessException("Permissão não encotrada!");
+		} else {
+			e = dao.obter(id);
+		}
+		return e;
 	}
 }

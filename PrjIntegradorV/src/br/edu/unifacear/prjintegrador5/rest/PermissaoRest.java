@@ -33,7 +33,7 @@ public class PermissaoRest {
 			return r.status(200).entity("Permissão inserida com sucesso!").build();
 			
 		} catch (Exception e) {
-			return r.status(200).entity(new BusinessException("Falha na conexão!")).build();
+			return r.status(200).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -49,7 +49,7 @@ public class PermissaoRest {
 			return r.status(200).entity("Permissão alterada com sucesso!").build();
 			
 		} catch(Exception e) {
-			return r.status(200).entity(new BusinessException("Falha na conexão!")).build();
+			return r.status(200).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -61,7 +61,7 @@ public class PermissaoRest {
 		try {
 			return r.status(200).entity(business.listar()).build();
 		} catch(Exception e) {
-			return r.status(200).entity(new BusinessException("Falha na conexão")).build();
+			return r.status(200).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -78,7 +78,7 @@ public class PermissaoRest {
 			return r.status(200).entity(business.obter(p.getId())).build();
 			
 		} catch (Exception e) {
-			return r.status(200).entity(new BusinessException("Falha na conexão!")).build();
+			return r.status(200).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -93,7 +93,7 @@ public class PermissaoRest {
 			
 			return r.status(200).entity("Permissão excluída com sucesso!").build();
 		} catch(Exception e) {
-			return r.status(200).entity("Falha na conexão!").build();
+			return r.status(200).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 }

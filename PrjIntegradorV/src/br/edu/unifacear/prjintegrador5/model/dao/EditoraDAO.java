@@ -8,7 +8,7 @@ import java.util.List;
 import br.edu.unifacear.prjintegrador5.model.entity.Editora;
 
 public class EditoraDAO extends DAO {
-	private String SQL_INSERT = "INSERT INTO EDITORAS (id, razaosocial, endereco, site, email) values(?, ?, ?, ?, ?);";
+	private String SQL_INSERT = "INSERT INTO EDITORAS (razaosocial, endereco, site, email) values(?, ?, ?, ?);";
 	private String SQL_UPDATE = "UPDATE EDITORAS SET razaosocial = ?, endereco = ?, site = ?, email = ? WHERE id = ?;";
 	private String SQL_SELECT = "SELECT * FROM EDITORAS;";
 	private String SQL_DELETE = "DELETE FROM EDITORAS WHERE id = ?;";
@@ -20,11 +20,10 @@ public class EditoraDAO extends DAO {
 			
 			PreparedStatement ps = db.getConnection().prepareStatement(SQL_INSERT);
 			
-			ps.setInt(1, ed.getId());
-			ps.setString(2, ed.getRazaoSocial());
-			ps.setString(3, ed.getEndereco());
-			ps.setString(4, ed.getSite());
-			ps.setString(5, ed.getEmail());
+			ps.setString(1, ed.getRazaoSocial());
+			ps.setString(2, ed.getEndereco());
+			ps.setString(3, ed.getSite());
+			ps.setString(4, ed.getEmail());
 			
 			ps.executeUpdate();
 			
