@@ -1,7 +1,7 @@
 package br.edu.unifacear.prjintegrador5.model.entity;
 
 public class Permissao {
-	private int id;
+	private Integer id;
 	private String descricao;
 	
 	public Permissao() {}
