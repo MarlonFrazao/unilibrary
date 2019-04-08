@@ -78,10 +78,10 @@ public class AutorBusiness {
 	public List<Autor> obter(String nome) throws BusinessException {
 		List<Autor> lista = new ArrayList<Autor>();
 		
-		if(dao.listar().size() < 1) {
+		if(dao.obter(nome).size() < 1) {
 			throw new BusinessException("Autor não encontrado!");
 		} else {
-			lista = dao.listar();
+			lista = dao.obter(nome);
 		}
 		
 		return lista;

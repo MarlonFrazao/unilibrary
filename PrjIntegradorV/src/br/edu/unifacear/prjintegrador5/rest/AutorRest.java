@@ -9,8 +9,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import br.edu.unifacear.prjintegrador5.entity.Autor;
-import br.edu.unifacear.prjintegrador5.business.AutorBusiness;
+import br.edu.unifacear.prjintegrador5.model.entity.Autor;
+import br.edu.unifacear.prjintegrador5.model.business.AutorBusiness;
 
 @Path("/autor")
 public class AutorRest {  

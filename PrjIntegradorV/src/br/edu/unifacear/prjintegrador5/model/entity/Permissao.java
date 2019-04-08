@@ -12,7 +12,7 @@ public class Permissao {
 		this.descricao = descricao;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
