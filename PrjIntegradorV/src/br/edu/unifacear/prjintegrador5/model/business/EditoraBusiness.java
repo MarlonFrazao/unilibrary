@@ -47,7 +47,7 @@ public class EditoraBusiness{
 		}
 		
 		if(!aux) {
-			throw new BusinessException("Impossível alterar: Permissão não encontrada!");
+			throw new BusinessException("Impossível alterar: Editora não encontrada!");
 		}
 	}
 	
