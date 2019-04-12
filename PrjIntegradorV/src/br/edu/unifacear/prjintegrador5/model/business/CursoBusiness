@@ -1,0 +1,36 @@
+package br.edu.unifacear.prjintegrador5.model.business;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import br.edu.unifacear.prjintegrador5.model.dao.CursoDAO;
+import br.edu.unifacear.prjintegrador5.model.entity.Curso;
+
+public class CursoBusiness {
+       private CursoDAO dao;
+       
+       public CursoBusiness () {
+              dao = new CursoDAO();
+       }
+       
+       public void inserir (Curso c) throws BusinessException {
+             if(dao.listar().size() < 1) {
+                   dao.inserir(c)
+             } else {
+                   Boolean aux = false;
+                   
+                   for(Curso cs : dao.listar()) {
+                        if(cs.getDescricao().equals(c.getDescricao()) {
+                             aux = true;
+                             break;
+                        }
+                   }
+                   
+                   if(!aux) {
+                        dao.inserir(c);
+                   } else {
+                        throw new BusinessException("Curso já cadastrado!");
+                   }
+             }
+       }
+}
