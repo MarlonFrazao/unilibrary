@@ -23,7 +23,7 @@ public class AutorBusiness {
 			for(Autor at : lista) {
 				if(at.getNome().equals(a.getNome())) {
 					aux = false;
-					throw new BusinessException("Autor j· cadastrado!");
+					throw new BusinessException("Autor j√° cadastrado!");
 				} else {
 					aux = true;
 				}
@@ -47,7 +47,7 @@ public class AutorBusiness {
 		}
 		
 		if(!aux) {
-			throw new BusinessException("ImpossÌvel alterar: Permiss„o n„o encontrada!");
+			throw new BusinessException("Imposs√≠vel alterar: Autor n√£o encontrada!");
 		}
 	}
 	
@@ -55,7 +55,7 @@ public class AutorBusiness {
 		List<Autor> lista = new ArrayList<Autor>();
 		
 		if(dao.listar().size() < 1) {
-			throw new BusinessException("N„o h· autores cadastrados!");
+			throw new BusinessException("N√£o h√° autores cadastrados!");
 		} else {
 			lista = dao.listar();
 		}
@@ -67,7 +67,7 @@ public class AutorBusiness {
 		Autor a = new Autor();
 		
 		if(dao.obter(id).getId() == null) {
-			throw new BusinessException("Autor n„o encontrado!");
+			throw new BusinessException("Autor n√£o encontrado!");
 		} else {
 			a = dao.obter(id);
 		}
@@ -79,7 +79,7 @@ public class AutorBusiness {
 		List<Autor> lista = new ArrayList<Autor>();
 		
 		if(dao.obter(nome).size() < 1) {
-			throw new BusinessException("Autor n„o encontrado!");
+			throw new BusinessException("Autor n√£o encontrado!");
 		} else {
 			lista = dao.obter(nome);
 		}
@@ -89,7 +89,7 @@ public class AutorBusiness {
 	
 	public void excluir(Autor a) throws BusinessException {
 		if(dao.obter(a.getId()).getNome().equals("")) {
-			throw new BusinessException("Autor n„o encontrado!");
+			throw new BusinessException("Autor n√£o encontrado!");
 		} else {
 			dao.excluir(a);
 		}
