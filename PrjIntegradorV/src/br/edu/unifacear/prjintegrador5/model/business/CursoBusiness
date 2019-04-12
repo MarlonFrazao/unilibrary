@@ -33,4 +33,20 @@ public class CursoBusiness {
                    }
              }
        }
+       
+       public void alterar(Curso c) throws BusinessException {
+              Boolean aux = false;
+              
+              for(Curso cs : dao.listar()) {
+                     if(cs.getId() == c.getId()) {
+                            dao.alterar(c);
+                            aux = true;
+                            break;
+                     }
+              }
+              
+              if(!aux) {
+                     throw new BusinessException("Impossível alterar: Curso não encontrado!");
+              }     
+       }
 }
