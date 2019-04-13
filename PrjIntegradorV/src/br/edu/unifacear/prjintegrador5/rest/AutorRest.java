@@ -55,7 +55,7 @@ public class AutorRest {
                 }
         }
         
-        @Path("/obter_id")
+        @Path("/obter/id")
         @Produces("application/json; charset=UTF-8")
         @Consumes("application/json; charset=UTF-8")
         @POST
@@ -67,7 +67,7 @@ public class AutorRest {
                 }
         }
         
-        @Path("/obter_nome")
+        @Path("/obter/nome")
         @Produces("application/json; charset=UTF-8")
         @Consumes("application/json; charset=UTF-8")
         @POST

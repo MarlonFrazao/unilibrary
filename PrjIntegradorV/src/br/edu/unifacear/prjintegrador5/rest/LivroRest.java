@@ -56,7 +56,7 @@ public class LivroRest {
             }
     }
     
-    @Path("/obter_id")
+    @Path("/obter/id")
     @Produces("application/json; charset=UTF-8")
     @Consumes("application/json; charset=UTF-8")
     @POST
@@ -68,7 +68,7 @@ public class LivroRest {
             }
     }
     
-    @Path("/obter_titulo")
+    @Path("/obter/titulo")
     @Produces("application/json; charset=UTF-8")
     @Consumes("application/json; charset=UTF-8")
     @POST
@@ -80,7 +80,7 @@ public class LivroRest {
             }
     }
     
-    @Path("/obter_autor")
+    @Path("/obter/autor")
     @Produces("application/json; charset=UTF-8")
     @Consumes("application/json; charset=UTF-8")
     @POST

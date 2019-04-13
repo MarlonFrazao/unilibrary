@@ -116,9 +116,9 @@ public class CursoDAO extends DAO {
 			
 			PreparedStatement ps = db.getConnection().prepareStatement(SQL_OBTER_DESCRICAO);
 			
-			ResultSet rs = ps.executeQuery();
+			ps.setString(1, '%' + descricao + '%');
 			
-			ps.setString(1, descricao);
+			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				Curso c = new Curso(rs.getInt("id"),
