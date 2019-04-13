@@ -122,4 +122,37 @@ public class AlunoDAO extends DAO{
      }
      return a;
   }
+
+  public List<Aluno> obterPorNome(String nome) {
+     List<Aluno> lista = new ArrayList<Aluno>();
+     
+     try {
+          conectar();
+          
+          PreparedStatement ps = db.getConnection().prepareStatement(SQL_OBTER_NOME);
+   
+           ps.setString(1, '%' + nome + '%');
+
+           ResultSet rs = ps.executeQuery();
+
+          while(rs.next()) {
+                Aluno a = new Aluno(rs.getInt("A.id"),
+										rs.getString("A.nome"),
+										rs.getString("A.email"),
+										new Curso(rs.getInt("C.id"),
+													rs.getString("C.descricao"),
+													rs.getBoolean("C.status")),
+										rs.getBoolean("A.status"),
+										rs.getInt("A.marticula"));
+           lista.add(a);
+           }
+           
+          desconectar();
+
+          ps.close();
+     } catch(Exception e) {
+          e.printStackTrace();
+     }
+     return lista;
+  }
 }
