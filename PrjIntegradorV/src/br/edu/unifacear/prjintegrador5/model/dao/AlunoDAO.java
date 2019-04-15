@@ -261,7 +261,7 @@ public class AlunoDAO extends DAO{
 			
 			ps.setInt(1, a.getId());
 			
-			ps.exceuteUpdate();
+			ps.executeUpdate();
 			
 			desconectar();
 			
