@@ -188,4 +188,86 @@ public class AlunoDAO extends DAO{
 
      return a;
   }
+	
+  public Aluno obterPorMatricula(int mat) {
+	  Aluno a = new Aluno();
+	  
+	  try {
+		  conectar();
+		  
+		  PreparedStatement ps = db.getConnection().prepareStatement(SQL_OBTER_MATRICULA);
+		  
+		  ps.setInt(1, mat);
+		  
+		  ResultSet rs = ps.executeQuery();
+		  
+		  while(rs.next()) {
+			  a = new Aluno(rs.getInt("A.id"),
+										rs.getString("A.nome"),
+										rs.getString("A.email"),
+										new Curso(rs.getInt("C.id"),
+													rs.getString("C.descricao"),
+													rs.getBoolean("C.status")),
+										rs.getBoolean("A.status"),
+										rs.getInt("A.marticula"));
+		  }
+		  desconectar();
+		  
+		  ps.close();
+	  } catch(Exception e) {
+		 e.printStackTrace();	  
+	  }
+	  return a;
+  }
+	
+	public List<Aluno> obterPorCurso(Curso c) {
+		List<Aluno> lista = new ArrayList<Aluno>();
+		
+		try {
+			conectar();
+			
+			PreparedStatement ps = db.getConnection().prepareStatement(SQL_OBTER_CURSO);
+			
+			ps.setInt(1, c.getId());
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Aluno a = new Aluno(rs.getInt("A.id"),
+										rs.getString("A.nome"),
+										rs.getString("A.email"),
+										new Curso(rs.getInt("C.id"),
+													rs.getString("C.descricao"),
+													rs.getBoolean("C.status")),
+										rs.getBoolean("A.status"),
+										rs.getInt("A.marticula"));
+				lista.add(a);
+			}
+			desconectar();
+			
+			ps.close();
+		} catch(Exception e) {
+			e.printStackTrace();	
+		}
+		
+		return lista;
+	}
+	
+	public void excluir(Aluno a) {
+	 	try {
+			conectar();
+			
+			PreparedStatement ps = db.getConnection().prepareStatement(SQL_DELETE);
+			
+			ps.setInt(1, a.getId());
+			
+			ps.exceuteUpdate();
+			
+			desconectar();
+			
+			ps.close();
+		} catch(Exception e) {
+		 	e.printStackTrace();	
+		}
+	}
 }
