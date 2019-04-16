@@ -50,6 +50,8 @@ public class AlunoBusiness {
 
      if(aux) {
          dao.alterar(a);
+     } else {
+         throw new BusinessException ("Aluno não encontrado!");
      }
   }
 }
