@@ -38,4 +38,18 @@ public class AlunoBusiness {
 			}
 		}
 	}
+
+  public void alterar(Aluno a) throws BusinessException{
+     Boolean aux = false;
+
+     if(dao.obterPorId(a.getId()).getId() == null) {
+         aux = false;
+     } else {
+         aux = true;
+     }
+
+     if(aux) {
+         dao.alterar(a);
+     }
+  }
 }
