@@ -7,106 +7,106 @@ import br.edu.unifacear.prjintegrador5.model.dao.CursoDAO;
 import br.edu.unifacear.prjintegrador5.model.entity.Curso;
 
 public class CursoBusiness {
-       private CursoDAO dao;
-       
-       public CursoBusiness () {
-              dao = new CursoDAO();
-       }
-       
-       public void inserir (Curso c) throws BusinessException {
-             if(dao.listar().size() < 1) {
-                   dao.inserir(c);
-             } else {
-                   Boolean aux = false;
-                   
-                   for(Curso cs : dao.listar()) {
-                        if(cs.getDescricao().equals(c.getDescricao())) {
-                             aux = true;
-                             break;
-                        }
-                   }
-                   
-                   if(!aux) {
-                        dao.inserir(c);
-                   } else {
-                        throw new BusinessException("Curso jÃ¡ cadastrado!");
-                   }
-             }
-       }
-       
-       public void alterar(Curso c) throws BusinessException {
-              Boolean aux = false;
-              
-              for(Curso cs : dao.listar()) {
-                     if(cs.getId() == c.getId()) {
-                            dao.alterar(c);
-                            aux = true;
-                            break;
-                     }
-              }
-              
-              if(!aux) {
-                     throw new BusinessException("ImpossÃ­vel alterar: Curso nÃ£o encontrado!");
-              }     
-       }
-       
-       public List<Curso> listar() throws BusinessException {
-              List<Curso> lista = new ArrayList<Curso>();
-              
-              if(dao.listar().size() < 1 ) {
-                     throw new BusinessException("NÃ£o hÃ¡ cursos cadastrados");
-              } else {
-                     lista = dao.listar();
-              }
-              
-              return lista;
-       }
-       
-       public Curso obter(int id) throws BusinessException {
-              Curso c = new Curso();
-              
-              if(dao.obter(id).getId() == null) {
-                     throw new BusinessException("Curso nÃ£o encontrado!");
-              } else {
-                     c = dao.obter(id);
-              }
-              
-              return c;
-       }
-       
-       public List<Curso> obter(String descricao) throws BusinessException {
-              List<Curso> lista = new ArrayList<Curso>();
-              
-              if(dao.obter(descricao).size() < 1) {
-                     throw new BusinessException("Curso nÃ£o encontrado!");
-              } else {
-                     lista = dao.obter(descricao);
-              }
-              
-              return lista;
-       }
-       
-       public void alterarStatus(int id) throws BusinessException {
-              Curso c = dao.obter(id);
-              if(c.getId() == null) {
-                     throw new BusinessException("Curso nÃ£o encontrado!");
-              } else {
-                     if(c.getStatus()) {
-                            c.setStatus(false);
-                     } else {
-                            c.setStatus(true);
-                     }
-                     
-                     dao.alterar(c);
-              }
-       }
-       
-       public void excluir(Curso c) throws BusinessException {
-              if(dao.obter(c.getId()).getId() == null) {
-                     throw new BusinessException("Curso nÃ£o encontrado!");
-              } else {
-                     dao.excluir(c);
-              }
-       }
+	private CursoDAO dao;
+
+	public CursoBusiness() {
+		dao = new CursoDAO();
+	}
+
+	public void inserir(Curso c) throws BusinessException {
+		if (dao.listar().size() < 1) {
+			dao.inserir(c);
+		} else {
+			Boolean aux = false;
+
+			for (Curso cs : dao.listar()) {
+				if (cs.getDescricao().equals(c.getDescricao())) {
+					aux = true;
+					break;
+				}
+			}
+
+			if (!aux) {
+				dao.inserir(c);
+			} else {
+				throw new BusinessException("Curso já cadastrado!");
+			}
+		}
+	}
+
+	public void alterar(Curso c) throws BusinessException {
+		Boolean aux = false;
+
+		for (Curso cs : dao.listar()) {
+			if (cs.getId() == c.getId()) {
+				dao.alterar(c);
+				aux = true;
+				break;
+			}
+		}
+
+		if (!aux) {
+			throw new BusinessException("Impossível alterar: Curso não encontrado!");
+		}
+	}
+
+	public List<Curso> listar() throws BusinessException {
+		List<Curso> lista = new ArrayList<Curso>();
+
+		if (dao.listar().size() < 1) {
+			throw new BusinessException("Não há cursos cadastrados");
+		} else {
+			lista = dao.listar();
+		}
+
+		return lista;
+	}
+
+	public Curso obter(int id) throws BusinessException {
+		Curso c = new Curso();
+
+		if (dao.obter(id).getId() == null) {
+			throw new BusinessException("Curso não encontrado!");
+		} else {
+			c = dao.obter(id);
+		}
+
+		return c;
+	}
+
+	public List<Curso> obter(String descricao) throws BusinessException {
+		List<Curso> lista = new ArrayList<Curso>();
+
+		if (dao.obter(descricao).size() < 1) {
+			throw new BusinessException("Curso não encontrado!");
+		} else {
+			lista = dao.obter(descricao);
+		}
+
+		return lista;
+	}
+
+	public void alterarStatus(int id) throws BusinessException {
+		Curso c = dao.obter(id);
+		if (c.getId() == null) {
+			throw new BusinessException("Curso não encontrado!");
+		} else {
+			if (c.getStatus()) {
+				c.setStatus(false);
+			} else {
+				c.setStatus(true);
+			}
+
+			dao.alterar(c);
+		}
+	}
+
+	public void excluir(Curso c) throws BusinessException {
+		if (dao.obter(c.getId()).getId() == null) {
+			throw new BusinessException("Curso não encontrado!");
+		} else {
+			dao.excluir(c);
+		}
+	}
 }
 
