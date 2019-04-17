@@ -9,7 +9,7 @@ import br.edu.unifacear.prjintegrador5.model.entity.Aluno;
 import br.edu.unifacear.prjintegrador5.model.entity.Curso;
 
 public class AlunoDAO extends DAO{
-	private String SQL_INSERT = "INSERT INTO ALUNOS (nome, email, cursoid, status, matricula) values (?, ?, ?, ?);";
+	private String SQL_INSERT = "INSERT INTO ALUNOS (nome, email, cursoid, status, matricula) values (?, ?, ?, ?, ?);";
 	private String SQL_UPDATE = "UPDATE ALUNOS SET nome = ?, email = ?, cursoid = ?, status = ?, matricula = ? where id = ?;";
 	private String SQL_SELECT = "SELECT * FROM ALUNOS A INNER JOIN CURSOS C ON A.cursoid = C.id ORDER BY A.nome;";
 	private String SQL_OBTER_ID = "SELECT * FROM ALUNOS A INNER JOIN CURSOS C ON A.cursoid = C.id WHERE A.id = ?;";
@@ -81,7 +81,7 @@ public class AlunoDAO extends DAO{
 													rs.getString("C.descricao"),
 													rs.getBoolean("C.status")),
 										rs.getBoolean("A.status"),
-										rs.getInt("A.marticula"));
+										rs.getInt("A.matricula"));
 				lista.add(a);
 			}
 			desconectar();
@@ -111,7 +111,7 @@ public class AlunoDAO extends DAO{
 													rs.getString("C.descricao"),
 													rs.getBoolean("C.status")),
 										rs.getBoolean("A.status"),
-										rs.getInt("A.marticula"));
+										rs.getInt("A.matricula"));
            }
 
           desconectar();
@@ -143,7 +143,7 @@ public class AlunoDAO extends DAO{
 													rs.getString("C.descricao"),
 													rs.getBoolean("C.status")),
 										rs.getBoolean("A.status"),
-										rs.getInt("A.marticula"));
+										rs.getInt("A.matricula"));
            lista.add(a);
            }
            
@@ -176,7 +176,7 @@ public class AlunoDAO extends DAO{
 													rs.getString("C.descricao"),
 													rs.getBoolean("C.status")),
 										rs.getBoolean("A.status"),
-										rs.getInt("A.marticula"));
+										rs.getInt("A.matricula"));
               }
 
              desconectar();
@@ -209,7 +209,7 @@ public class AlunoDAO extends DAO{
 													rs.getString("C.descricao"),
 													rs.getBoolean("C.status")),
 										rs.getBoolean("A.status"),
-										rs.getInt("A.marticula"));
+										rs.getInt("A.matricula"));
 		  }
 		  desconectar();
 		  
@@ -240,7 +240,7 @@ public class AlunoDAO extends DAO{
 													rs.getString("C.descricao"),
 													rs.getBoolean("C.status")),
 										rs.getBoolean("A.status"),
-										rs.getInt("A.marticula"));
+										rs.getInt("A.matricula"));
 				lista.add(a);
 			}
 			desconectar();
