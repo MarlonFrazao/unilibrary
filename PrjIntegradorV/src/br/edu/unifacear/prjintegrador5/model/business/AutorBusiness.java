@@ -67,7 +67,7 @@ public class AutorBusiness {
 		Autor a = new Autor();
 		
 		if(dao.obter(id).getId() == null) {
-			throw new BusinessException("Autor n√£o encontrado!");
+			throw new BusinessException("Autor n„o encontrado!");
 		} else {
 			a = dao.obter(id);
 		}
