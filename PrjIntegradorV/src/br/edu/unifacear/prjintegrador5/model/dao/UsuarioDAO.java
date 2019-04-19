@@ -8,6 +8,7 @@ import java.util.List;
 import br.edu.unifacear.prjintegrador5.model.entity.Usuario;
 import br.edu.unifacear.prjintegrador5.model.entity.Permissao;
 import br.edu.unifacear.prjintegrador5.model.entity.Aluno;
+import br.edu.unifacear.prjintegrador5.model.entity.Curso;
 
 public class UsuarioDAO extends DAO {
 	private String SQL_INSERT = "INSERT INTO USUARIOS (usuario, senha, permissaoid, status, alunoid) values (?, ?, ?, ?, ?);";
