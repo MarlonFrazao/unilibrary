@@ -14,8 +14,8 @@ public class UsuarioDAO extends DAO {
 	private String SQL_INSERT = "INSERT INTO USUARIOS (usuario, senha, permissaoid, status, alunoid) values (?, ?, ?, ?, ?);";
 	private String SQL_UPDATE = "UPDATE USUARIOS SET usuario = ?, senha = ?, permissaoid = ?, status = ?, alunoid = ? WHERE id = ?;";
 	private String SQL_SELECT = "SELECT * FROM USUARIOS U INNER JOIN PERMISSOES P ON U.permissaoid = P.id INNER JOIN alunos A ON U.alunoid = A.id INNER JOIN cursos C on A.cursoid = C.id;";
-	private String SQL_OBTER_ID = "SELECT * FROM USUARIOS U INNER JOIN PERMISSOES p ON U.permissaoid = P.id INNER JOIN alunos A ON U.alunoid = A.id WHERE U.id = ?;";
-	private String SQL_OBTER_USUARIO = "SELECT * FROM USUARIOS U INNER JOIN PERMISSOES p ON U.permissaoid = P.id INNER JOIN alunos A ON U.alunoid = A.id WHERE U.usuario = ?;";
+	private String SQL_OBTER_ID = "SELECT * FROM USUARIOS U INNER JOIN PERMISSOES P ON U.permissaoid = P.id INNER JOIN alunos A ON U.alunoid = A.id INNER JOIN cursos C on A.cursoid = C.id WHERE U.id = ?;";
+	private String SQL_OBTER_USUARIO = "SELECT * FROM USUARIOS U INNER JOIN PERMISSOES P ON U.permissaoid = P.id INNER JOIN alunos A ON U.alunoid = A.id INNER JOIN cursos C on A.cursoid = C.id WHERE U.usuario = ?;";
 	private String SQL_DELETE = "DELETE FROM USUARIOS WHERE ID = ?;";
 	
 	public void inserir(Usuario u) {
@@ -28,7 +28,7 @@ public class UsuarioDAO extends DAO {
 			ps.setInt(2, u.getSenha());
 			ps.setInt(3, u.getPermissao().getId());
 			ps.setBoolean(4, u.getStatus());
-			ps.setInt(5, u.getAluno().getId();
+			ps.setInt(5, u.getAluno().getId());
 			
 			ps.executeUpdate();
 			
@@ -50,7 +50,7 @@ public class UsuarioDAO extends DAO {
 			ps.setInt(2, u.getSenha());
 			ps.setInt(3, u.getPermissao().getId());
 			ps.setBoolean(4, u.getStatus());
-			ps.setInt(5, u.getAluno().getId();
+			ps.setInt(5, u.getAluno().getId());
 			ps.setInt(6, u.getId());
 			
 			ps.executeUpdate();
@@ -182,7 +182,7 @@ public class UsuarioDAO extends DAO {
 			
 			ps.setInt(1, u.getId());
 			
-			ps.exceuteUpdate();
+			ps.executeUpdate();
 			
 			desconectar();
 			
