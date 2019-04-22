@@ -10,7 +10,8 @@ public class Aluno {
 	
 	public Aluno() {}
 
-	public Aluno(Integer id, String nome, String email, Curso curso, Boolean status, Integer matricula) {
+	public Aluno(Integer id, String nome, String email, Curso curso, 
+			Boolean status, Integer matricula) {
 		super();
 		this.id = id;
 		this.nome = nome;
