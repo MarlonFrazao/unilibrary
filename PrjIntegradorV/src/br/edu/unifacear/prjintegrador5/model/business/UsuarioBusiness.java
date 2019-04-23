@@ -28,8 +28,8 @@ public class UsuarioBusiness {
 	}
 	
 	public void alterar(Usuario u) throws BusinessException {
-		if(dao.obterPorId(i.getId()).getId() == null) {
-			throw new BusinessException("Usuario nao encontrado"!);
+		if(dao.obterPorId(u.getId()).getId() == null) {
+			throw new BusinessException("Usuario nao encontrado!");
 		} else {
 			try {
 				dao.alterar(u);
@@ -77,7 +77,7 @@ public class UsuarioBusiness {
 		try {
 			u = dao.obterPorUsuario(usuario);
 		} catch(Exception e) {
-			throw new BusinessException("Erro na conexão com o banco de dados: " + e.getMessage());
+			throw new BusinessException("Erro na conexao com o banco de dados: " + e.getMessage());
 		}
 		
 		if(u.getId() == null) {
@@ -91,53 +91,56 @@ public class UsuarioBusiness {
 		Usuario us = new Usuario();
 		
 		try {
-			us = dao.obterPorId(u.getId());
-			
-			if(us.getId() != null) {
-				if(us.getStatus) {
-					u.setStatus(false);
-				} else {
-					u.setStatus(true);
-				}
-			
-				dao.alterar(u);
-			} else {
-				throw new BusinessException("Usuario nao encontrado!");
-			}
+			us = dao.obterPorId(u.getId());	
 		} catch(Exception e) {
 			throw new BusinessException("Erro na conexão com o banco de dados: " + e.getMessage());
+		}
+		
+		if(us.getId() != null) {
+			if(us.getStatus()) {
+				u.setStatus(false);
+			} else {
+				u.setStatus(true);
+			}
+		
+			dao.alterar(u);
+		} else {
+			throw new BusinessException("Usuario nao encontrado!");
 		}
 	}
 	
 	public void excluir(Usuario u) throws BusinessException {
+		Usuario us = new Usuario();
 		try {
-			if(dao.obterPorId(u.getId()).getId() == null) {
-				throw new BusinessException("Usuario nao encontrado!");
-			} else {
-				dao.excluir(u);
-			}
+			us = dao.obterPorId(u.getId());
 		} catch(Exception e) {
 			throw new BusinessException("Erro na conexão com o banco de dados: " + e.getMessage());
+		}
+		
+		if(us.getId() == null) {
+			throw new BusinessException("Usuario nao encontrado!");
+		} else {
+			dao.excluir(u);
 		}
 	}
 	
 	public Boolean login(int usuario, int senha)  throws BusinessException {
 		Boolean aceito = false;
-		
+		Usuario u = new Usuario();
 		try {
-			Usuario u = dao.obterPorUsuario(usuario);
-			
-			if(u.getId() == null) {
-				throw new BusinessException("Usuario nao encontrado!");
-			} else {
-				if(u.getSenha() == senha) {
-					aceito = true;
-				} else {
-					aceito = false;
-				}
-			}
+			u = dao.obterPorUsuario(usuario);
 		} catch(Exception e) {
 			throw new BusinessException("Erro na conexão com o banco de dados: " + e.getMessage());
+		}
+		
+		if(u.getId() == null) {
+			throw new BusinessException("Usuario nao encontrado!");
+		} else {
+			if(u.getSenha() == senha) {
+				aceito = true;
+			} else {
+				aceito = false;
+			}
 		}
 		
 		return aceito;

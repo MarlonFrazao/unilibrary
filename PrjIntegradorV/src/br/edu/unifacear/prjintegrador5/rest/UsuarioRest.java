@@ -28,7 +28,7 @@ public class UsuarioRest {
 			business.inserir(u);
 			return Response.status(201).entity("Usuario cadastrado com sucesso!").build();
 		} catch(Exception e) {
-			return Response.status(201).entity("Erro: " + e.getMessage()).buld();
+			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -40,7 +40,7 @@ public class UsuarioRest {
 			business.alterar(u);
 			return Response.status(201).entity("Usuario alterado com sucesso!").build();
 		} catch(Exception e) {
-			return Response.status(201).entity("Erro: " + e.getMessage()).buld();
+			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -49,9 +49,9 @@ public class UsuarioRest {
 	@Path("/listar")
 	public Response listar() {
 		try {
-			return Response.status(201).entity(business.listar()).buld();
+			return Response.status(201).entity(business.listar()).build();
 		} catch(Exception e) {
-			return Response.status(201).entity("Erro: " + e.getMessage()).buld();
+			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -61,9 +61,9 @@ public class UsuarioRest {
 	@Path("/obter/id")
 	public Response obterPorId(Usuario u) {
 		try {
-			return Response.status(201).entity(business.obterPorId(u.getId())).buld();
+			return Response.status(201).entity(business.obterPorId(u.getId())).build();
 		} catch(Exception e) {
-			return Response.status(201).entity("Erro: " + e.getMessage()).buld();
+			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -73,9 +73,9 @@ public class UsuarioRest {
 	@Path("/obter/usuario")
 	public Response obterPorUsuario(Usuario u) {
 		try {
-			return Response.status(201).entity(business.obterPorId(u.getUsuario())).buld();
+			return Response.status(201).entity(business.obterPorUsuario(u.getUsuario())).build();
 		} catch(Exception e) {
-			return Response.status(201).entity("Erro: " + e.getMessage()).buld();
+			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -87,7 +87,7 @@ public class UsuarioRest {
 			business.alterarStatus(u);
 			return Response.status(201).entity("Status alterado com sucesso!").build();
 		} catch(Exception e) {
-			return Response.status(201).entity("Erro: " + e.getMessage()).buld();
+			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -99,7 +99,7 @@ public class UsuarioRest {
 			business.excluir(u);
 			return Response.status(201).entity("Usuario excluido com sucesso!").build();
 		}catch(Exception e) {
-			return Response.status(201).entity("Erro: " + e.getMessage()).buld();
+			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 	
@@ -109,9 +109,9 @@ public class UsuarioRest {
 	@Path("/login")
 	public Response login(Usuario u) {
 		try {
-			return Response.status(201).entity(business.login(u.getUsuario(), u.getSenha()).build();
+			return Response.status(201).entity(business.login(u.getUsuario(), u.getSenha())).build();
 		} catch(Exception e) {
-			return Response.status(201).entity("Erro: " + e.getMessage()).buld();
+			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
 	}
 }
