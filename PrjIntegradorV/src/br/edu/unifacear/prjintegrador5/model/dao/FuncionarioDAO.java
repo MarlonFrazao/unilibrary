@@ -69,7 +69,7 @@ public class FuncionarioDAO extends DAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Funcionario f = new Fucionario(rs.getInt("id"),
+				Funcionario f = new Funcionario(rs.getInt("id"),
 												rs.getString("nome"),
 												rs.getString("email"),
 												rs.getInt("contrato"),
@@ -98,7 +98,7 @@ public class FuncionarioDAO extends DAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				f = new Fucionario(rs.getInt("id"),
+				f = new Funcionario(rs.getInt("id"),
 									rs.getString("nome"),
 									rs.getString("email"),
 									rs.getInt("contrato"),
@@ -126,7 +126,7 @@ public class FuncionarioDAO extends DAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Funcionario f = new Fucionario(rs.getInt("id"),
+				Funcionario f = new Funcionario(rs.getInt("id"),
 												rs.getString("nome"),
 												rs.getString("email"),
 												rs.getInt("contrato"),
@@ -155,7 +155,7 @@ public class FuncionarioDAO extends DAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				f = new Fucionario(rs.getInt("id"),
+				f = new Funcionario(rs.getInt("id"),
 									rs.getString("nome"),
 									rs.getString("email"),
 									rs.getInt("contrato"),

@@ -109,7 +109,11 @@ public class UsuarioRest {
 	@Path("/login")
 	public Response login(Usuario u) {
 		try {
-			return Response.status(201).entity(business.login(u.getUsuario(), u.getSenha())).build();
+			if(business.login(u.getUsuario(), u.getSenha())) {
+				return Response.status(201).entity(business.obterPorUsuario(u.getUsuario())).build();
+			} else {
+				return Response.status(201).entity(false).build();
+			}
 		} catch(Exception e) {
 			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
