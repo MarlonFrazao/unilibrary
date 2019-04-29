@@ -9,7 +9,8 @@ public class Funcionario {
 	
 	public Funcionario() {}
 
-	public Funcionario(Integer id, String nome, String email, Integer contrato, Boolean status) {
+	public Funcionario(Integer id, String nome, String email, 
+			Integer contrato, Boolean status) {
 		super();
 		this.id = id;
 		this.nome = nome;
