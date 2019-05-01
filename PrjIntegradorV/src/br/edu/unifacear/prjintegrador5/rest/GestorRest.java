@@ -74,7 +74,7 @@ public class GestorRest {
 	@Path("/obter/usuario")
 	public Response obterPorUsuario(Gestor g) {
 		try {
-			return Response.status(201).entity(business.obterPorUsuario(g.getId())).build();
+			return Response.status(201).entity(business.obterPorUsuario(g.getUsuario())).build();
 		} catch(Exception e) {
 			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
@@ -86,7 +86,7 @@ public class GestorRest {
 	@Path("/obter/funcionario")
 	public Response obterPorFuncionario(Funcionario f) {
 		try {
-			return Response.status(201).entity(business.obterFuncionario(f)).build();
+			return Response.status(201).entity(business.obterPorFuncionario(f)).build();
 		} catch(Exception e) {
 			return Response.status(201).entity("Erro: " + e.getMessage()).build();
 		}
@@ -97,7 +97,7 @@ public class GestorRest {
 	@Path("/alterar/status")
 	public Response alterarStatus(Gestor g) {
 		try {
-			business.alterarStatus(g)
+			business.alterarStatus(g);
 			return Response.status(201).entity("Status alterado com sucesso!").build();
 		} catch(Exception e) {
 			return Response.status(201).entity("Erro: " + e.getMessage()).build();
@@ -109,7 +109,7 @@ public class GestorRest {
 	@Path("/excluir")
 	public Response excluir(Gestor g) {
 		try {
-			business.excluir(g)
+			business.excluir(g);
 			return Response.status(201).entity("Gestor excluido com sucesso!").build();
 		} catch(Exception e) {
 			return Response.status(201).entity("Erro: " + e.getMessage()).build();
@@ -118,11 +118,12 @@ public class GestorRest {
 	
 	@POST
 	@Consumes("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8")
 	@Path("/login")
 	public Response login(Gestor g) {
 		try {
-			if(business.login(g.getUsuario(), g.getSenha()) {
-				return Response.status(201).entity(business.obterPorUsuario(g.getUsuario)).build();
+			if(business.login(g.getUsuario(), g.getSenha())) {
+				return Response.status(201).entity(business.obterPorUsuario(g.getUsuario())).build();
 			} else {
 				return Response.status(201).entity(false).build();
 			}

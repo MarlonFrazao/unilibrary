@@ -1,9 +1,9 @@
 package br.edu.unifacear.prjintegrador5.model.business;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.unifacear.prjintegrador5.model.dao.GestorDAO;
+import br.edu.unifacear.prjintegrador5.model.entity.Funcionario;
 import br.edu.unifacear.prjintegrador5.model.entity.Gestor;
 
 public class GestorBusiness {
