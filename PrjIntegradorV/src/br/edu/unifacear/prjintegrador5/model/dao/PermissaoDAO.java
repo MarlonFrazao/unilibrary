@@ -70,6 +70,7 @@ public class PermissaoDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -114,6 +115,7 @@ public class PermissaoDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

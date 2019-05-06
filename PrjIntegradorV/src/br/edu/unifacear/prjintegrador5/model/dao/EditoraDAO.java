@@ -80,6 +80,7 @@ public class EditoraDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} 
@@ -129,6 +130,7 @@ public class EditoraDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

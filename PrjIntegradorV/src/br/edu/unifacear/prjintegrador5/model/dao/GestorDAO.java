@@ -58,6 +58,7 @@ public class GestorDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -91,6 +92,7 @@ public class GestorDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -126,6 +128,7 @@ public class GestorDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -162,6 +165,7 @@ public class GestorDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -198,6 +202,7 @@ public class GestorDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

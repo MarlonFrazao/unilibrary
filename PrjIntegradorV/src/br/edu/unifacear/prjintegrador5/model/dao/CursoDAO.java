@@ -74,6 +74,7 @@ public class CursoDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -101,6 +102,7 @@ public class CursoDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -130,6 +132,7 @@ public class CursoDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

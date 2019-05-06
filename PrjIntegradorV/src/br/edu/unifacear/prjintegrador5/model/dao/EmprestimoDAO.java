@@ -106,6 +106,7 @@ public class EmprestimoDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -154,6 +155,7 @@ public class EmprestimoDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -203,6 +205,7 @@ public class EmprestimoDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -252,6 +255,7 @@ public class EmprestimoDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}

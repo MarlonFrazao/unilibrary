@@ -80,6 +80,7 @@ public class FuncionarioDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -108,6 +109,7 @@ public class FuncionarioDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -137,6 +139,7 @@ public class FuncionarioDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -165,6 +168,7 @@ public class FuncionarioDAO extends DAO {
 			desconectar();
 			
 			ps.close();
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
