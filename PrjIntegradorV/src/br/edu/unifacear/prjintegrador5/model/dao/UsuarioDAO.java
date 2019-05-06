@@ -141,9 +141,10 @@ public class UsuarioDAO extends DAO {
 			}
 
 			desconectar();
-
-			ps.close();
+			
 			rs.close();
+			ps.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
