@@ -16,9 +16,12 @@ import br.edu.unifacear.prjintegrador5.model.entity.Livro;
 
 @Path("/emprestimo")
 public class EmprestimoRest {
+	
 	private EmprestimoBusiness business;
 	
 	public EmprestimoRest() {
+		// TODO Auto-generated constructor stub
+	
 		business = new EmprestimoBusiness();
 	}
 	
