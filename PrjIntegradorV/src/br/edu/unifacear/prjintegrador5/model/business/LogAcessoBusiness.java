@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.edu.unifacear.prjintegrador5.model.dao.LogAcessoDAO;
 import br.edu.unifacear.prjintegrador5.model.entity.LogAcesso;
-import br.edu.unufacear.prjintegrador5.model.entity.Usuario;
+import br.edu.unifacear.prjintegrador5.model.entity.Usuario;
 
 public class LogAcessoBusiness {
 	private LogAcessoDAO dao;
@@ -18,41 +18,35 @@ public class LogAcessoBusiness {
 		List<LogAcesso> lista = dao.obter(l.getUsuario());
 		Boolean aux = false;
 		
-		if(l.getInicio() > l.getFim()) {
-			throw new BusinessException("horario de inicio deve sem menor que o horario final!");
+		if (lista.size() < 1) {
+			dao.inserir(l);
 		} else {
-		
-			if(lista.size() < 1) {
-				dao.inserir(l);
-			} else {
-				for(LogAcesso la : lista) {
-					if(la.getInicio().equals(l.getInicio()) && la.getFim().equals(l.getFim())) {
-						aux = false;
-						break;
-					} else {
-						aux = true;
-					}
-				}
-		
-				if(aux) {
-					dao.inserir(l);
+			for (LogAcesso la : lista) {
+				if (la.getInicio().equals(l.getInicio()) && la.getFim().equals(l.getFim())) {
+					aux = false;
+					break;
 				} else {
-					throw new BusinessException("Acesso duplicado!");
+					aux = true;
 				}
 			}
+
+			if (aux) {
+				dao.inserir(l);
+			} else {
+				throw new BusinessException("Acesso duplicado!");
+			}
 		}
+
 	}
 	
 	public void alterar(LogAcesso l) throws BusinessException {
-		
-		if(dao.obter(l.getId()).getId() == null) {
+
+		if (dao.obter(l.getId()).getId() == null) {
 			throw new BusinessException("Log nao encontrado!");
 		} else {
-			if(l.getInicio() > l.getFim()) {
-				throw new BusinessException("horario de inicio deve sem menor que o horario final!");
-			} else {
-				dao.alterar(l);
-			}
+
+			dao.alterar(l);
+
 		}
 	}
 	
@@ -76,7 +70,7 @@ public class LogAcessoBusiness {
 		return l;
 	}
 	
-	public List<LogAcesso> obter(Ususrio u) throws BusinessException {
+	public List<LogAcesso> obter(Usuario u) throws BusinessException {
 		List<LogAcesso> lista = dao.obter(u);
 		
 		if(lista.size() < 1) {
@@ -86,7 +80,7 @@ public class LogAcessoBusiness {
 		return lista;
 	}
 	
-	public void excluir(LogAcesso) throws BusinessException {
+	public void excluir(LogAcesso l ) throws BusinessException {
 		if(dao.obter(l.getId()).getId() == null) {
 			throw new BusinessException("Log nao encontrado!");
 		} else {

@@ -7,7 +7,11 @@ import java.util.List;
 
 import br.edu.unifacear.prjintegrador5.model.entity.AgendarEmprestimo;
 import br.edu.unifacear.prjintegrador5.model.entity.Aluno;
+import br.edu.unifacear.prjintegrador5.model.entity.Autor;
 import br.edu.unifacear.prjintegrador5.model.entity.Curso;
+import br.edu.unifacear.prjintegrador5.model.entity.Editora;
+import br.edu.unifacear.prjintegrador5.model.entity.Fila;
+import br.edu.unifacear.prjintegrador5.model.entity.Livro;
 
 public class AgendarEmprestimoDAO extends DAO {
 	private String SQL_INSERT = "INSERT INTO AGENDAREMPRESTIMO (alunoid, status, posicaofilaid) values (?, ?, ?);";
